@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/3306/
+    url: jdbc:mysql://localhost:3306/chat_management
     username: root
     password: 123456789
 
@@ -14,3 +14,10 @@ spring:
 
     show-sql: true
 
+#sevler for uploading/sending  a file
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
