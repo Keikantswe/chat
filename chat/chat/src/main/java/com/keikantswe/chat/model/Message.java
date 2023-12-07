@@ -4,14 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Message {
 
-    private Long id;
-    private String name;
-    private String email;
-    private String password;
+    private String messageId;
+
+    private String message;
+    private String file;
+    private Date timeStamp;
 
 }
