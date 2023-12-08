@@ -60,7 +60,7 @@
     align-items: center;
 
     .Container{
-        border: 1px solid;
+        border: 1px ;
         height: 100%;
         width: 100%;
         display: flex;
@@ -85,7 +85,7 @@
 
                 .img{
                     background-color: #fff;
-                    height: 24px;
+                    height: 25px;
                     width: 25px;
                     border-radius: 50%;
                     object-fit: cover;
@@ -98,6 +98,45 @@
                     margin-right: 10px;
                     cursor: pointer;
                 }
+            }
+
+            .Search{
+                border-bottom: 1px solid gray;
+                
+                .SearchedUser{
+                    padding: 10px;
+
+                    input{
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        color: white;
+                    }
+                }
+                
+            }
+
+            .FoundUser{
+                align-items: center;
+                display: flex;
+                padding: 10px;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+                &:hover{
+                    background-color: #30A0E0;
+                }
+
+
+                img{
+                    background-color: #fff;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    border: 1px solid yellow;
+                    object-fit: cover;
+                }
+
             }
 
         }
