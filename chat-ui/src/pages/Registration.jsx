@@ -4,15 +4,15 @@ const Registration = () => {
   return (
     <div className='formContainer'>
         <div className='formWrapper'>
-            <form>
+            <form className='form'>
                 <span className='title'>Register</span>
 
                 <input type='text' placeholder='name'/>
                 <input type='email' placeholder='email'/>
                 <input type='password' placeholder='password'/>
-                <button>sign up</button>
+                <button>Sign up</button>
 
-                <p> You dont have an account? Login</p>
+                <p> You already have an account? Login</p>
             </form>
         </div>
     </div>
