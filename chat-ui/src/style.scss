@@ -127,7 +127,6 @@
                     background-color: #30A0E0;
                 }
 
-
                 img{
                     background-color: #fff;
                     width: 25px;
@@ -135,10 +134,20 @@
                     border-radius: 50%;
                     border: 1px solid yellow;
                     object-fit: cover;
+                    
                 }
 
-            }
+                .FoundUserChat{
+                    span{
+                        font-size: 18px;
+                    }
 
+                    p{
+                        //display: flex;
+                        color: gray
+                    }
+                }
+            }
         }
 
         .Chat{
