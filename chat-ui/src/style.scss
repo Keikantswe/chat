@@ -152,6 +152,53 @@
 
         .Chat{
             flex: 2;
+
+            .ChatInfo{
+                height: 50px;
+                display: flex;
+                background-color: #006bbb;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                color: white;
+                font-size: 17px;
+
+                img{
+                    height: 24px;
+                    cursor: pointer;
+                }
+            }
+
+            .Messages{
+                background-color: darkcyan;
+                padding: 10px;
+                height: calc(100% - 498px);
+                //Must take input to bottom
+            }
+
+            .InputMessage{
+                height: 50px;
+                background-color: #fff;
+                padding: 10px;
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+
+                input{
+                    outline: none;
+                    width: 100%;
+                }
+
+                button{
+                    background-color: #ffc872;
+                    border-radius: 10%;
+                    padding: 6px;
+                    color: #fff;
+                }
+                
+            }
+
+
         }
     }
 }
