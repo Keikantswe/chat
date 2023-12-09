@@ -13,6 +13,7 @@ const Search = () => {
         <div className='FoundUserDetails'>
           <span> Rama </span>
         </div>
+        
       </div>
     </div>
   )
