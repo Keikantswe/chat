@@ -24,8 +24,13 @@ public class UserController {
     }
 
     //Logging in
-    @GetMapping("/user/Login")
-    public User fetchUser(@RequestBody String email,  String password){
+    @GetMapping("/login")
+    public UserEntity fetchUser(@RequestBody  String email,  String password){
         return userService.fetchUser(email, password);
+    }
+
+    @GetMapping("/login/")
+    public List<UserEntity> fetchAll(){
+        return  userService.fetchAll();
     }
 }

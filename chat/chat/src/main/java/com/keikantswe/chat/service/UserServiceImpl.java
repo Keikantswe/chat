@@ -7,6 +7,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements  UserService{
 
@@ -23,11 +25,18 @@ public class UserServiceImpl implements  UserService{
         return user;
     }
 
+    //Logging in
     @Override
-    public User fetchUser(String email, String password) {
+    public UserEntity fetchUser(String email, String password) {
 
-        User user = userRepository.findByEmailAndPassword(email, password);
-
-        return user;
+        return userRepository.findByEmailAndPassword(email, password);
     }
+
+    @Override
+    public List<UserEntity> fetchAll() {
+
+        return userRepository.findAll();
+    }
+
+
 }
