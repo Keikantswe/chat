@@ -10,5 +10,6 @@ public interface UserService {
 
     UserEntity fetchUser(String email, String password);
 
-    List<UserEntity> fetchAll();
+
+    UserEntity searchUsers(String name);
 }

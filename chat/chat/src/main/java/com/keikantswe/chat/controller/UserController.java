@@ -6,7 +6,6 @@ import com.keikantswe.chat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @RestController
@@ -17,8 +16,8 @@ public class UserController {
     private UserService userService;
 
 
-    //Reqistering the user
-    @PostMapping("/user")
+    //Register the user
+    @PostMapping("/register")
     public User addUser(@RequestBody User user){
         return userService.addUser(user);
     }
@@ -29,8 +28,9 @@ public class UserController {
         return userService.fetchUser(email, password);
     }
 
-    @GetMapping("/login/")
-    public List<UserEntity> fetchAll(){
-        return  userService.fetchAll();
+    //Searching users
+    @GetMapping("/users")
+    public UserEntity searchUsers( String name){
+        return  userService.searchUsers(name);
     }
 }
