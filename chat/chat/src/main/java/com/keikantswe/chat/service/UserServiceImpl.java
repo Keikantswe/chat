@@ -5,6 +5,8 @@ import com.keikantswe.chat.model.User;
 import com.keikantswe.chat.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,12 +15,19 @@ import java.util.List;
 public class UserServiceImpl implements  UserService{
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserRepository userRepository;
     @Override
     public User addUser(User user) {
         UserEntity userEntity = new UserEntity();
 
-        BeanUtils.copyProperties(user, userEntity);
+        userEntity.setName(user.getName());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        //BeanUtils.copyProperties(user, userEntity);
 
         userRepository.save(userEntity);
 
@@ -33,9 +42,8 @@ public class UserServiceImpl implements  UserService{
     }
 
     @Override
-    public List<UserEntity> fetchAll() {
-
-        return userRepository.findAll();
+    public UserEntity searchUsers(String name) {
+        return userRepository.findByNameContainingIgnoreCase(name);
     }
 
 
