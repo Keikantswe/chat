@@ -16,13 +16,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    //Reqistering the user
     @PostMapping("/user")
     public User addUser(@RequestBody User user){
         return userService.addUser(user);
     }
 
-    @GetMapping("/user/{email}/{password}")
-    public User fetchUser(@RequestParam String email, @RequestParam String password){
+    //Logging in
+    @GetMapping("/user/Login")
+    public User fetchUser(@RequestBody String email,  String password){
         return userService.fetchUser(email, password);
     }
 }
