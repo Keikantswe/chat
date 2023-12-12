@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState }from 'react'
 
-const Login = () => {
+const Login = () => {  
+
   return (
   <div className='formContainer'>
   <div className='formWrapper'>
@@ -13,7 +14,7 @@ const Login = () => {
  
           <button> Login </button>
 
-          <p> You dont have an account? Register</p>
+          <p> You dont have an account? <a href='/register'>Register</a></p>
       </form>
   </div>
 </div>
