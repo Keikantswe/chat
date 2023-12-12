@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
     private UserService userService;
-
 
     //Register the user
     @PostMapping("/register")
@@ -30,7 +30,7 @@ public class UserController {
 
     //Searching users
     @GetMapping("/users")
-    public UserEntity searchUsers( String name){
-        return  userService.searchUsers(name);
+    public UserEntity searchUsers( String userName){
+        return  userService.searchUsers(userName);
     }
 }
