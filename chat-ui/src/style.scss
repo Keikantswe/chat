@@ -152,6 +152,7 @@
 
         .Chat{
             flex: 2;
+            height: calc(100% - 160px);
 
             .ChatInfo{
                 height: 50px;
@@ -162,7 +163,7 @@
                 padding: 10px;
                 color: white;
                 font-size: 17px;
-
+                
                 img{
                     height: 24px;
                     cursor: pointer;
@@ -170,10 +171,71 @@
             }
 
             .Messages{
-                background-color: darkcyan;
+                background-color: #ffc872;
                 padding: 10px;
-                height: calc(100% - 498px);
-                //Must take input to bottom
+                height: calc(100% - -60px);
+                overflow: scroll;
+
+
+                .Message{
+                    display: flex;
+                    gap: 10px;
+                    
+                    .MessageInfo{
+
+                        display: flex;
+                        font-weight: 300;
+                        color: gray;
+                        flex-direction: column;
+                        margin-bottom: 20px;
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            background-color: white;
+                        }
+
+                    }
+
+                    .MessageContent{
+                        display: flex;
+                        max-width: 80%;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        p{
+                            background-color:aquamarine;
+                            padding: 10px 20px;
+                            border-radius: 0px 10px 10px 10px ;
+                            border: 1px solid;
+                            max-width: max-content;
+
+                        }
+
+                        img{
+                            width: 50%;
+                            margin-bottom: 10px;
+                        }
+
+                    }
+
+                    &.owner{
+                        flex-direction: row-reverse;
+
+                        .MessageContent{
+                            align-items: flex-end;
+
+                        p{
+                            background-color: cornflowerblue;
+                            border-radius: 10px 0px 10px 10px;
+                            padding: 10px;
+                        }
+                        }   
+
+                    }
+                }
             }
 
             .InputMessage{

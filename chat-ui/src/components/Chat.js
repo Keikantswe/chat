@@ -10,11 +10,6 @@ const Chat = () => {
         <span> Kelly </span> 
         <img src={more} alt=''/>
       </div>  
-
-      <Messages/>
-      <Messages/>
-      <Messages/>
-      <Messages/>
       <Messages/>
       <InputMessage/>
     </div>
