@@ -15,9 +15,9 @@ spring:
     show-sql: true
 
 #sevler for uploading/sending  a file
-  servlet:
-    multipart:
-      enabled: true
-      file-size-threshold: 2KB
-      max-file-size: 200MB
-      max-request-size: 215MB
+  #servlet:
+   # multipart:
+    # enabled: true
+     # file-size-threshold: 2KB
+      #max-file-size: 200MB
+      #max-request-size: 215MB
