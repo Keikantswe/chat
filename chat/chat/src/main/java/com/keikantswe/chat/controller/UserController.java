@@ -37,6 +37,7 @@ public class UserController {
     //Searching users
     @GetMapping("/users")
     public UserEntity searchUsers( String userName){
+
         return  userService.searchUsers(userName);
     }
 }
