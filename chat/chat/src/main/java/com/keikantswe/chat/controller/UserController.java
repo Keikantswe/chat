@@ -36,7 +36,7 @@ public class UserController {
 
     //Searching users
     @GetMapping("/users")
-    public UserEntity searchUsers( String userName){
+    public UserEntity searchUsers( @RequestParam String userName){
 
         return  userService.searchUsers(userName);
     }
