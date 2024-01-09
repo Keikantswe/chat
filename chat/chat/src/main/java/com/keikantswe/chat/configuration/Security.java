@@ -12,6 +12,6 @@ public class Security {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return  new BCryptPasswordEncoder();
+        return  new BCryptPasswordEncoder(11);
     }
 }
