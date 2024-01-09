@@ -1,10 +1,7 @@
 package com.keikantswe.chat.repository;
 
 import com.keikantswe.chat.entity.UserEntity;
-import com.keikantswe.chat.model.Login;
-import com.keikantswe.chat.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -17,5 +14,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity> findByEmailAndPassword(String email, String password);
     UserEntity findByEmail(String email);
 
-    UserEntity findByUserNameContainingIgnoreCase(String userName);
+    Optional<UserEntity> findByUserNameContainingIgnoreCase(String userName);
 }

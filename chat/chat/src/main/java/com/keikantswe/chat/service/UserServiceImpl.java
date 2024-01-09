@@ -1,12 +1,14 @@
 package com.keikantswe.chat.service;
 
 import com.keikantswe.chat.entity.UserEntity;
+//import com.keikantswe.chat.exception.User;
+import com.keikantswe.chat.exception.UserNameNotFoundException;
 import com.keikantswe.chat.model.Login;
 import com.keikantswe.chat.model.User;
 import com.keikantswe.chat.repository.UserRepository;
 import com.keikantswe.chat.response.LoginResponse;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -66,8 +68,16 @@ public class UserServiceImpl implements  UserService{
     }
 
     @Override
-    public UserEntity searchUsers(String userName) {
-        return userRepository.findByUserNameContainingIgnoreCase(userName);
+    public UserEntity searchUsers(String userName) throws UserNameNotFoundException {
+
+        Optional <UserEntity> user = userRepository.findByUserNameContainingIgnoreCase(userName);
+
+        if(!user.isPresent()){
+            throw new UserNameNotFoundException(" user not found");
+        }
+
+
+        return user.get();
     }
 
 }

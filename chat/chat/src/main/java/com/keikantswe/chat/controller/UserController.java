@@ -1,12 +1,14 @@
 package com.keikantswe.chat.controller;
 
 import com.keikantswe.chat.entity.UserEntity;
+import com.keikantswe.chat.exception.UserNameNotFoundException;
 import com.keikantswe.chat.model.Login;
 import com.keikantswe.chat.model.User;
 import com.keikantswe.chat.response.LoginResponse;
 import com.keikantswe.chat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,9 +37,8 @@ public class UserController {
     }
 
     //Searching users
-    @GetMapping("/users")
-    public UserEntity searchUsers( @RequestParam String userName){
-
+    @GetMapping("/users/{username}")
+    public UserEntity searchUsers( @PathVariable("username") String userName) throws UserNameNotFoundException {
         return  userService.searchUsers(userName);
     }
 }
