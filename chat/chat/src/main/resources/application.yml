@@ -11,13 +11,31 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
     show-sql: true
 
-#sevler for uploading/sending  a file
-  #servlet:
-   # multipart:
-    # enabled: true
-     # file-size-threshold: 2KB
-      #max-file-size: 200MB
-      #max-request-size: 215MB
+  kafka:
+    producer:
+      bootstrap.servers: localhost:9092
+      key.serializer: org.apache.kafka.common.serialization.StringSerializer
+      value.serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      bootstrap.servers: localhost:9092
+      key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group.id: your_consumer_group_id
+      auto-offset-reset: earliest
+
+      logging:
+        level:
+          org.springframework.kafka: INFO
+         # Geeks.Chat.kafkaService: INFO
+
+
+# Uncomment and adjust if you need to configure file upload settings
+# servlet:
+#   multipart:
+#     enabled: true
+#     file-size-threshold: 2KB
+#     max-file-size: 200MB
+#     max-request-size: 215MB

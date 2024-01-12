@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -38,7 +39,7 @@ public class UserController {
 
     //Searching users
     @GetMapping("/users/{username}")
-    public UserEntity searchUsers( @PathVariable("username") String userName) throws UserNameNotFoundException {
-        return  userService.searchUsers(userName);
+    public UserEntity searchUsers(@PathVariable("username") String userName) throws UserNameNotFoundException {
+        return userService.searchUsers(userName);
     }
 }
