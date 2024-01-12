@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "contact")
@@ -14,18 +16,26 @@ public class ContactEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contact_id")
     private Long contact_id;
 
     @ManyToOne
     @JoinColumn(
             name = "user_id"
     )
-    private UserEntity other_user;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(
             name = "Contact_user_id"
     )
-    private UserEntity contact_user;
+    private UserEntity contactUser;
+
+
+//    @OneToMany(mappedBy = "receiver")  // Correct the mappedBy property
+//    private List<MessageEntity> conversations;
+
+
+
 
 }

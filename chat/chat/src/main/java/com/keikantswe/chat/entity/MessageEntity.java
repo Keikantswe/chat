@@ -2,23 +2,30 @@ package com.keikantswe.chat.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "message")
 public class MessageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "messageId")
     private Long messageId;
 
-    @Lob
-    private String message;
-    private String file;
-    private Date timeStamp;
+    //@Lob
+
+//    private String file;
+//    private Date timeStamp;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -27,5 +34,8 @@ public class MessageEntity {
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private UserEntity receiver;
+
+    @Column(name = "message")
+    private String message;
 
 }
