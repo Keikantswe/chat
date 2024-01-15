@@ -22,10 +22,9 @@ public class MessageEntity {
     @Column(name = "messageId")
     private Long messageId;
 
-    //@Lob
-
-//    private String file;
-//    private Date timeStamp;
+    @Lob
+    private String file;
+    private Date timeStamp;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -38,4 +37,12 @@ public class MessageEntity {
     @Column(name = "message")
     private String message;
 
+    public MessageEntity(UserEntity sender, UserEntity receiver, String message) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
+    }
+
+    public MessageEntity(String sender, String receiver, String message) {
+    }
 }
