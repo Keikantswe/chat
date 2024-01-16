@@ -5,6 +5,7 @@ import com.keikantswe.chat.entity.MessageEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,8 @@ import org.springframework.stereotype.Component;
 @Data
 public class Producer {
 
-    private String TOPIC = "chatting";
+    @Value("${spring.kafka.topic.name}")
+    private String TOPIC;
 
     @Autowired
     private KafkaTemplate<String , String> kafkaTemplate;

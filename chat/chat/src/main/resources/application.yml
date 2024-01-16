@@ -15,20 +15,25 @@ spring:
 
   kafka:
     producer:
-      bootstrap.servers: localhost:9092
-      key.serializer: org.apache.kafka.common.serialization.StringSerializer
-      value.serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
     consumer:
-      bootstrap.servers: localhost:9092
-      key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group.id: your_consumer_group_id
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: chat
       auto-offset-reset: earliest
 
-      logging:
-        level:
-          org.springframework.kafka: INFO
+    topic:
+      name: chatting
+    template:
+      default-topic: ${spring.kafka.topic.name}
+
+    #logging:
+       # level:
+        #  org.springframework.kafka: INFO
          # Geeks.Chat.kafkaService: INFO
 
 
