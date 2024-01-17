@@ -1,6 +1,6 @@
 package com.keikantswe.chat.kafkaService;
 
-import com.keikantswe.chat.configuration.JacksonObjectMapperConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.keikantswe.chat.entity.MessageEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -20,27 +20,18 @@ public class Producer {
     @Autowired
     private KafkaTemplate<String , String> kafkaTemplate;
 
-    @Autowired
-    private JacksonObjectMapperConfig jacksonObjectMapperConfig;
 
-    public void sendMessage(String sender, String receiver, String message){
+    public void sendMessage(MessageEntity messageEntity) {
+        try{
+            ObjectMapper objectMapper = new ObjectMapper();
+            String serializedMessage = objectMapper.writeValueAsString(messageEntity);
 
-        try {
-            String key = sender + receiver;
+            kafkaTemplate.send(TOPIC, serializedMessage);
 
-            MessageEntity messageEntity = new MessageEntity(sender , receiver, message);
-
-            String value = jacksonObjectMapperConfig.WriteValueAsStringUsingObjectMapper(jacksonObjectMapperConfig.objectMapper(), messageEntity);
-
-
-            kafkaTemplate.send(TOPIC, key, value);
-            log.info("Message sent Successfully" + message);
-
-        } catch (Exception e){
-
-            log.error("Failed to send message" + e.getMessage());
+            log.info("Message sent successful: {} ", serializedMessage);
+        }catch (Exception e){
+            log.error("Failed to send message: {} ", e.getMessage());
             e.printStackTrace();
         }
-
     }
 }
