@@ -12,7 +12,6 @@ import java.util.List;
 public interface UserService {
     User addUser(User user);
 
-
     UserEntity searchUsers(String userName) throws UserNameNotFoundException;
 
     LoginResponse fetchUser(Login login);

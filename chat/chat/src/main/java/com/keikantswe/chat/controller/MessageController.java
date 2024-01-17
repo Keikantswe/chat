@@ -1,7 +1,8 @@
 package com.keikantswe.chat.controller;
 
 import com.keikantswe.chat.kafkaService.Consumer;
-import com.keikantswe.chat.messageSercice.MessageService;
+import com.keikantswe.chat.service.MessageService;
+import com.keikantswe.chat.service.MessageServiceImpl;
 import com.keikantswe.chat.response.ApiResponse;
 import com.keikantswe.chat.response.MessageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class MessageController {
 
     @PostMapping("/send-message")
     public ResponseEntity<ApiResponse> sendMessage(@RequestBody MessageRequest messageRequest){
-        messageService.sendConversation(
+        messageService.sendMessage(
                 messageRequest.getSenderUsername(),
                 messageRequest.getReceiverUsername(),
                 messageRequest.getMessageContent()

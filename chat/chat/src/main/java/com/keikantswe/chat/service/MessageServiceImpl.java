@@ -1,4 +1,4 @@
-package com.keikantswe.chat.messageSercice;
+package com.keikantswe.chat.service;
 
 import com.keikantswe.chat.entity.ContactEntity;
 import com.keikantswe.chat.entity.MessageEntity;
@@ -8,14 +8,13 @@ import com.keikantswe.chat.repository.ContactRepository;
 import com.keikantswe.chat.repository.MessageRepository;
 import com.keikantswe.chat.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageService {
+public class MessageServiceImpl implements  MessageService{
 
     @Autowired
     private ContactRepository contactRepository;
@@ -30,7 +29,7 @@ public class MessageService {
     private Producer producer;
 
     @Transactional //No duplications
-    public void sendConversation(String senderUsername, String receiverUsername, String message){
+    public void sendMessage(String senderUsername, String receiverUsername, String message){
         UserEntity sender = userRepository.findByUserName(senderUsername);
         UserEntity receiver = userRepository.findByUserName(receiverUsername);
 
