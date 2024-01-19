@@ -4,11 +4,11 @@ import com.keikantswe.chat.entity.UserEntity;
 import com.keikantswe.chat.exception.UserNameNotFoundException;
 import com.keikantswe.chat.model.Login;
 import com.keikantswe.chat.model.User;
+import com.keikantswe.chat.response.ForgotPasswordRequest;
 import com.keikantswe.chat.response.LoginResponse;
 import com.keikantswe.chat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +37,23 @@ public class UserController {
         return ResponseEntity.ok(loginResponse);
     }
 
-    //Searching users
+
+    //Search Users.
     @GetMapping("/users/{username}")
-    public UserEntity searchUsers(@PathVariable("username") String userName) throws UserNameNotFoundException {
-        return userService.searchUsers(userName);
+    public ResponseEntity<List<UserEntity>> searchUsers(@PathVariable("username") String userName) throws UserNameNotFoundException {
+        List<UserEntity> foundUsers = userService.searchUsers(userName);
+
+        if (!foundUsers.isEmpty()) {
+            return ResponseEntity.ok(foundUsers);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    //reset password
+    @PostMapping("/user/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ForgotPasswordRequest request){
+        userService.resetPassword(request.getEmail(), request.getNewPassword());
+        return ResponseEntity.ok("Password set successfully");
     }
 }

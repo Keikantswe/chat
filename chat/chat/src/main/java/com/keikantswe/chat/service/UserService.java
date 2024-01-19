@@ -5,14 +5,19 @@ import com.keikantswe.chat.exception.UserNameNotFoundException;
 import com.keikantswe.chat.model.Login;
 import com.keikantswe.chat.model.User;
 import com.keikantswe.chat.response.LoginResponse;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface UserService {
     User addUser(User user);
 
-    UserEntity searchUsers(String userName) throws UserNameNotFoundException;
+   
 
     LoginResponse fetchUser(Login login);
+
+    void resetPassword(String email, String newPassword);
+
+    List<UserEntity> searchUsers(String userName) throws UserNameNotFoundException;
+
+    // List<UserEntity> searchUsers(String userName);
 }
