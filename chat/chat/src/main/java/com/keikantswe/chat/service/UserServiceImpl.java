@@ -6,6 +6,7 @@ import com.keikantswe.chat.exception.UserNameNotFoundException;
 import com.keikantswe.chat.model.Login;
 import com.keikantswe.chat.model.User;
 import com.keikantswe.chat.repository.UserRepository;
+import com.keikantswe.chat.response.ForgotPasswordRequest;
 import com.keikantswe.chat.response.LoginResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
@@ -78,7 +79,7 @@ public class UserServiceImpl implements  UserService{
         UserEntity user = userRepository.findByEmail(email);
 
         if( user != null){
-            user.setPassword(newPassword);
+            user.setPassword(this.passwordEncoder.encode(newPassword));
             userRepository.save(user);
         }
 

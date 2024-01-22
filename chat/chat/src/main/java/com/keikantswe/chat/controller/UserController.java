@@ -8,6 +8,7 @@ import com.keikantswe.chat.response.ForgotPasswordRequest;
 import com.keikantswe.chat.response.LoginResponse;
 import com.keikantswe.chat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,16 @@ public class UserController {
     //reset password
     @PostMapping("/user/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody ForgotPasswordRequest request){
-        userService.resetPassword(request.getEmail(), request.getNewPassword());
-        return ResponseEntity.ok("Password set successfully");
+
+        //Attempt to reset password
+        try{
+            userService.resetPassword(request.getEmail(), request.getNewPassword());
+
+            return ResponseEntity.ok(request.getEmail() + " password  successfully");
+
+        } catch (Exception e){
+            return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to reset password");
+        }
     }
 }

@@ -11,8 +11,6 @@ import java.util.List;
 public interface UserService {
     User addUser(User user);
 
-   
-
     LoginResponse fetchUser(Login login);
 
     void resetPassword(String email, String newPassword);
