@@ -93,7 +93,7 @@ public class UserServiceImpl implements  UserService{
         if (!users.isEmpty()) {
             log.info("Found" + users);
         } else {
-            //throw new UserNameNotFoundException("Did not find"+ userName);
+            log.info( users + " Not found");
         }
         return users;
     }
