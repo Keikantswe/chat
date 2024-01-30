@@ -23,6 +23,7 @@ public class ContactController {
     public ResponseEntity<List<ContactEntity>> searchFriend(@PathVariable("userName") String userName){
 
         //fix this code
+        //Github in Intellij
         List<ContactEntity> searchedFriend = contactService.searchFriend(userName);
 
         if (searchedFriend != null){
