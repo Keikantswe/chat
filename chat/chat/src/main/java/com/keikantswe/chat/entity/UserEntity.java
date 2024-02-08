@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "user")
+//@Table(name = "")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserEntity {
 

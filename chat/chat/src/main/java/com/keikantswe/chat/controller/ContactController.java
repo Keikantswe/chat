@@ -34,13 +34,13 @@ public class ContactController {
         //Github in Intellij
         //List<ContactEntity> searchedFriend = contactService.searchFriend(userName);
 
-        userId = userService.searchFriend(userName);
+        //userId = userService.searchFriend(userName);
 
-        if (searchedFriend != null){
-            return ResponseEntity.ok(searchedFriend);
-        }else{
+       //if (searchedFriend != null){
+           // return ResponseEntity.ok(searchedFriend);
+       //}else{
             return ResponseEntity.notFound().build();
-        }
+       // }
     }
 
 
